@@ -1,0 +1,2 @@
+class BusinessRuleValidationException(Exception):
+    pass
