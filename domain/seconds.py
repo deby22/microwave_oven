@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
 from domain.exceptions import BusinessRuleValidationException
+from domain.value_object import ValueObject
 
 
 @dataclass(frozen=True)
-class Seconds:
+class Seconds(ValueObject):
     value: int
 
     def __post_init__(self):
