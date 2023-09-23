@@ -1,16 +1,15 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import NegativeInt, PositiveInt
 
+from auth.jwt_bearer import JWTBearer
 from microwave.application.schemas import Microwave
 from microwave.application.service import ApplicationService
-
-# from auth_bearer import JWTBearer
 
 router = APIRouter()
 
 
 @router.get("/state", response_model=Microwave)
-async def read_state():  # token: str = Depends(JWTBearer())):
+async def read_state():
     service = ApplicationService()
     return service.get_state()
 
@@ -28,6 +27,6 @@ async def update_counter(time: NegativeInt | PositiveInt):
 
 
 @router.post("/cancel", response_model=Microwave)
-async def cancel():
+async def cancel(token: str = Depends(JWTBearer())):
     service = ApplicationService()
     return service.cancel()
