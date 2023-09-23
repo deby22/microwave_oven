@@ -1,8 +1,10 @@
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
 from auth.router import router as auth_router
-from dependencies import get_redis
 from microwave.application.rest import router as rest_router
+from microwave.domain.exceptions import BusinessRuleValidationException
 
 tags_metadata = [
     {
@@ -20,3 +22,13 @@ app = FastAPI(openapi_tags=tags_metadata)
 
 app.include_router(rest_router, tags=["Microwave"])
 app.include_router(auth_router, tags=["Auth"])
+
+
+@app.exception_handler(BusinessRuleValidationException)
+async def unicorn_exception_handler(
+    request: Request, exc: BusinessRuleValidationException
+):
+    return JSONResponse(
+        status_code=422,
+        content={"error": f"{exc}"},
+    )

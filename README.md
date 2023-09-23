@@ -13,13 +13,10 @@ Each button can be pressed by anyone, except the Cancel button, which requires a
 
 TODO:
 
-1. [ + ] domain layer with business logic
-2. [ - ] website to see current microwave status
-3. [ - ] application layer with fastapi endpoints
-4. [ - ] JWT token for cancel button
-5. [ - ] websockets
-6. [ - ] infrastructure layer to keep microwave state
-7. [ - ] Add logging info
-8. [ - ] Optional - add makefile
-9. [ - ] add run instruction
-10. [ - ] calculate counter = current_time - timer
+1. [ - ] website to see current microwave status
+2. [ - ] application layer with fastapi endpoints
+3. [ - ] websockets
+4. [ - ] Add logging info
+5. [ - ] Optional - add makefile
+6. [ - ] add run instruction (test/coverage/run/and so on)
+7. [ - ] run docker-compose (in makefile?)
