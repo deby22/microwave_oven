@@ -1,5 +1,4 @@
 import pytest
-
 from microwave.domain.exceptions import BusinessRuleValidationException
 from microwave.domain.seconds import Seconds
 

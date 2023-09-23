@@ -1,7 +1,6 @@
+from auth.jwt_decoder import JWTDecoder
 from fastapi import HTTPException, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-
-from auth.jwt_decoder import JWTDecoder
 
 
 class JWTBearer(HTTPBearer):

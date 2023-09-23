@@ -1,5 +1,4 @@
 import pytest
-
 from microwave.domain.power import BusinessRuleValidationException, Power
 
 

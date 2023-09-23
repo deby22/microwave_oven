@@ -1,11 +1,10 @@
-from fastapi import APIRouter, Depends
-from pydantic import NegativeInt, PositiveInt
-
 from auth.jwt_bearer import JWTBearer
 from dependencies import get_redis
+from fastapi import APIRouter, Depends
 from microwave.application.schemas import Microwave
 from microwave.application.service import ApplicationService
 from microwave.infrastructure.repositories.in_redis import RedisRepository
+from pydantic import NegativeInt, PositiveInt
 
 router = APIRouter()
 

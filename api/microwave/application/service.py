@@ -1,8 +1,7 @@
-from pydantic import NegativeInt, PositiveInt
-
 from microwave.application.schemas import Microwave as MicrowaveDTO
 from microwave.domain.microwave_oven import MicrowaveOven as MicrowaveEntity
 from microwave.domain.repository import IMicrowaveRepository
+from pydantic import NegativeInt, PositiveInt
 
 
 class ApplicationService:

@@ -1,7 +1,6 @@
-from fastapi import APIRouter, Body
-
 from auth.jwt_decoder import JWTDecoder
 from auth.schema import UserSchema
+from fastapi import APIRouter, Body
 
 router = APIRouter()
 

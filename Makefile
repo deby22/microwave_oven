@@ -16,4 +16,4 @@ isort:
 lint: isort black flake8
 
 test:  ## Run tests
-	$(PYTHON) -m pytest api 
+	$(PYTHON) -m pytest api

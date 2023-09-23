@@ -1,10 +1,9 @@
-from fastapi import FastAPI
-from starlette.requests import Request
-from starlette.responses import JSONResponse
-
 from auth.router import router as auth_router
+from fastapi import FastAPI
 from microwave.application.rest import router as rest_router
 from microwave.domain.exceptions import BusinessRuleValidationException
+from starlette.requests import Request
+from starlette.responses import JSONResponse
 
 tags_metadata = [
     {

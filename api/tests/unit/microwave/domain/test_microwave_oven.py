@@ -1,7 +1,6 @@
 from time import time
 
 import pytest
-
 from microwave.domain.exceptions import BusinessRuleValidationException
 from microwave.domain.microwave_oven import MicrowaveOven
 
