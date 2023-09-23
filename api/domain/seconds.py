@@ -21,8 +21,5 @@ class Seconds(ValueObject):
     def __bool__(self) -> bool:
         return self.value != 0
 
-    def __lt__(self, other: int | float) -> bool:
-        return self.value < other
-
     def __int__(self):
         return round(self.value)

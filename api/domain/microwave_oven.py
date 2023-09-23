@@ -38,6 +38,8 @@ class MicrowaveOven:
         self._power = Power(0)
 
     def _time_expired(self):
+        if not self._turn_of_time:
+            return True
         return self._turn_of_time <= time()
 
     def increase_time(self, value):
@@ -46,6 +48,10 @@ class MicrowaveOven:
         self._turn_of_time += value
 
     def decrease_time(self, value):
+        if not self._turn_of_time:
+            raise BusinessRuleValidationException(
+                "Cannot decrease time. Microwave is turn off"
+            )
         if self._turn_of_time - value < time():
             raise BusinessRuleValidationException("Seconds should be greater than 0")
         self._turn_of_time -= value

@@ -1,6 +1,7 @@
 from typing import Type
 
-from domain.microwave_oven import MicrowaveOven
+from application.schemas import Microwave as MicrowaveDTO
+from domain.microwave_oven import MicrowaveOven as MicrowaveEntity
 from domain.repository import IMicrowaveRepository
 from infrastructure.repositories.in_memory import InMemoryRepository
 
@@ -11,4 +12,5 @@ class ApplicationService:
 
     def get_state(self):
         data = self._repo.read()
-        microwave = MicrowaveOven(**data)
+        microwave = MicrowaveEntity(**data)
+        return MicrowaveDTO(**microwave.to_dict())
