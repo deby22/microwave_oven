@@ -20,3 +20,4 @@ TODO:
 5. [ - ] Optional - add makefile
 6. [ - ] add run instruction (test/coverage/run/and so on)
 7. [ - ] run docker-compose (in makefile?)
+8. [ - ] integration tests

@@ -4,6 +4,8 @@ services:
   redis:
     image: redis:latest
     container_name: redis_microwave_db
+    networks:
+      - deployml_network
     ports:
       - 6379:6379
     command: ["redis-server", "--appendonly", "yes"]
@@ -13,6 +15,8 @@ services:
   redis-commander:
     image: rediscommander/redis-commander:latest
     container_name: redis-ui
+    networks:
+      - deployml_network
     environment:
       - REDIS_HOSTS=local:redis:6379
       - HTTP_USER=admin
@@ -22,7 +26,24 @@ services:
     depends_on:
       - redis
 
+  web:
+    build: .
+    command: uvicorn app:app --host 0.0.0.0
+    volumes:
+      - .:/app/api
+    ports:
+      - 8000:8000
+    networks:
+      - deployml_network
+    depends_on:
+      - redis
+
 volumes:
   redis-data:
+
+
+networks:
+  deployml_network:
+    driver: bridge
 
 
