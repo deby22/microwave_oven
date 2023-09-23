@@ -2,8 +2,8 @@ from time import time
 
 import pytest
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.microwave_oven import MicrowaveOven
+from microwave.domain.exceptions import BusinessRuleValidationException
+from microwave.domain.microwave_oven import MicrowaveOven
 
 
 class TestPower:
@@ -83,14 +83,29 @@ class TestDictRepresentation:
     def test_oven_to_dict_when_is_on(self):
         future = time() + 5
         oven = MicrowaveOven(future, 10)
-        assert {"state": "ON", "power": 10, "counter": 5} == oven.to_dict()
+        assert {
+            "state": "ON",
+            "power": 10,
+            "counter": 5,
+            "turn_of_time": future,
+        } == oven.to_dict()
 
     def test_oven_to_dict_when_was_never_turned_on(self):
         oven = MicrowaveOven(None, 10)
-        assert {"state": "ON", "power": 10, "counter": 0} == oven.to_dict()
+        assert {
+            "state": "ON",
+            "power": 10,
+            "counter": 0,
+            "turn_of_time": None,
+        } == oven.to_dict()
 
     def test_oven_should_be_still_on_but_counter_shows_0_when_time_is_from_past(self):
         """Microwave is ON when Power or Counter are greater than zero"""
         past = time() - 1
         oven = MicrowaveOven(past, 10)
-        assert {"state": "ON", "power": 10, "counter": 0} == oven.to_dict()
+        assert {
+            "state": "ON",
+            "power": 10,
+            "counter": 0,
+            "turn_of_time": past,
+        } == oven.to_dict()

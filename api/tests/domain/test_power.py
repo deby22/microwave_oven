@@ -1,6 +1,6 @@
 import pytest
 
-from domain.power import BusinessRuleValidationException, Power
+from microwave.domain.power import BusinessRuleValidationException, Power
 
 
 def test_power_could_not_be_lower_than_0():
@@ -21,6 +21,7 @@ def test_power_should_be_created_with_valid_value():
 
 def test_decrease_power():
     assert Power(0) == Power(10) - 10
+    assert Power(1) == Power(10) - 9
 
 
 def test_increase_power():

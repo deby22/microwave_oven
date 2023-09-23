@@ -1,7 +1,7 @@
 import pytest
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.seconds import Seconds
+from microwave.domain.exceptions import BusinessRuleValidationException
+from microwave.domain.seconds import Seconds
 
 
 def test_time_could_not_be_lower_than_0():

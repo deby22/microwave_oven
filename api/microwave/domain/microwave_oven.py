@@ -1,9 +1,9 @@
 from time import time
 from typing import Optional
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.power import Power
-from domain.seconds import Seconds
+from microwave.domain.exceptions import BusinessRuleValidationException
+from microwave.domain.power import Power
+from microwave.domain.seconds import Seconds
 
 
 class MicrowaveOven:
@@ -27,6 +27,7 @@ class MicrowaveOven:
             "state": self.state,
             "power": int(self._power),
             "counter": int(self._counter()),
+            "turn_of_time": self._turn_of_time,
         }
 
     @property
@@ -45,7 +46,6 @@ class MicrowaveOven:
     def increase_time(self, value):
         if self._time_expired():
             self._turn_of_time = time() + value
-        self._turn_of_time += value
 
     def decrease_time(self, value):
         if not self._turn_of_time:
@@ -54,10 +54,10 @@ class MicrowaveOven:
             )
         if self._turn_of_time - value < time():
             raise BusinessRuleValidationException("Seconds should be greater than 0")
-        self._turn_of_time -= value
+        self._turn_of_time = self._turn_of_time - value
 
     def increase_power(self, value):
         self._power += value
 
     def decrease_power(self, value):
-        self._power -= value
+        self._power = self._power - value

@@ -1,5 +1,5 @@
-from domain.repository import IMicrowaveRepository
-from infrastructure.schemas import Microwave
+from microwave.domain.repository import IMicrowaveRepository
+from microwave.infrastructure.schemas import Microwave
 
 
 class RedisRepository(IMicrowaveRepository):

@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.value_object import ValueObject
+
+from microwave.domain.exceptions import BusinessRuleValidationException
+from microwave.domain.value_object import ValueObject
 
 
 @dataclass(frozen=True)
@@ -19,7 +20,7 @@ class Power(ValueObject):
         return Power(value=(value + self.value))
 
     def __sub__(self, value: int) -> "Power":
-        return Power(value=(value - self.value))
+        return Power(value=(self.value - value))
 
     def __bool__(self) -> bool:
         return self.value != 0

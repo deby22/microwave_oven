@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.value_object import ValueObject
+from microwave.domain.exceptions import BusinessRuleValidationException
+from microwave.domain.value_object import ValueObject
 
 
 @dataclass(frozen=True)

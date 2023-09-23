@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from application import rest
+from microwave.application import rest
 
 app = FastAPI()
 
