@@ -22,3 +22,6 @@ class Seconds:
 
     def __lt__(self, other: int | float) -> bool:
         return self.value < other
+
+    def __int__(self):
+        return self.value

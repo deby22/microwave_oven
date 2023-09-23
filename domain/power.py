@@ -22,3 +22,6 @@ class Power:
 
     def __bool__(self) -> bool:
         return self.value != 0
+
+    def __int__(self):
+        return self.value

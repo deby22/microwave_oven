@@ -19,7 +19,11 @@ class MicrowaveOven:
         self._set_initial_last_turning_on()
 
     def to_dict(self):
-        return {"state": self.state, "power": self._power, "counter": self._counter}
+        return {
+            "state": self.state,
+            "power": int(self._power),
+            "counter": int(self._counter),
+        }
 
     @property
     def state(self) -> str:

@@ -32,6 +32,11 @@ def test_oven_is_turn_on_when_time_is_greater_than_0():
     assert oven.state == "ON"
 
 
+def test_oven_to_dict():
+    oven = MicrowaveOven(5, 10)
+    assert {"state": "ON", "power": 10, "counter": 5} == oven.to_dict()
+
+
 def test_oven_is_turn_off_after_canceling():
     oven = MicrowaveOven(10, 0)
     oven.cancel()
