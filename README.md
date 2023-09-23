@@ -11,5 +11,11 @@ Each button can be pressed by anyone, except the Cancel button, which requires a
 * * For simplicity, you can obtain a token from the jwt.io website with an HS256 signature and a simple secret.
 * Design and implement the simplest user interface to display the microwave and its state, as well as the buttons for power, counter adjustments, cancel and state (Microwave is ON when Power or Counter are greater than zero).
 
+TODO:
 
-
+1. [ + ] domain layer with business logic
+2. [ - ] website to see current microwave status
+3. [ - ] application layer with fastapi endpoints
+4. [ - ] JWT token for cancel button
+5. [ - ] websockets
+6. [ - ] infrastructure layer to keep microwave state

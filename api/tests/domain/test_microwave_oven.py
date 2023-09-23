@@ -2,9 +2,9 @@ from time import time
 
 import pytest
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.microwave_oven import MicrowaveOven
-from domain.time_provider import TimeProvider
+from api.domain.exceptions import BusinessRuleValidationException
+from api.domain.microwave_oven import MicrowaveOven
+from api.domain.time_provider import TimeProvider
 
 
 class DummyTimeProvider(TimeProvider):

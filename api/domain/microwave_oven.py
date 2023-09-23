@@ -1,9 +1,9 @@
 from typing import Type
 
-from domain.exceptions import BusinessRuleValidationException
-from domain.power import Power
-from domain.seconds import Seconds
-from domain.time_provider import RealTimeProvider, TimeProvider
+from api.domain.exceptions import BusinessRuleValidationException
+from api.domain.power import Power
+from api.domain.seconds import Seconds
+from api.domain.time_provider import RealTimeProvider, TimeProvider
 
 
 class MicrowaveOven:
