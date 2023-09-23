@@ -48,3 +48,10 @@ make lint
 ```python
 make test
 ```
+### Run integration tests
+
+### WARNING! Require working API!
+
+```python
+make integration
+```

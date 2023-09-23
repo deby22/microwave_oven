@@ -15,5 +15,9 @@ isort:
 
 lint: isort black flake8
 
-test:  ## Run tests
-	cd api && python -m pytest tests && cd ..
+test:  ## Run unit tests
+	cd api && python -m pytest tests -m "not integration" && cd ..
+
+
+integration:  ## Run integration tests
+	cd api && python -m pytest tests -m integration && cd ..
