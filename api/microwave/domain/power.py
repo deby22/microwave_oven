@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 from microwave.domain.exceptions import BusinessRuleValidationException
 from microwave.domain.value_object import ValueObject
 

@@ -1,4 +1,10 @@
-from redis_om import get_redis_connection
+import redis
 
 
-redis_db = get_redis_connection(host="localhost", port="6379")
+def create_redis():
+    return redis.ConnectionPool(
+        host="localhost", port=6379, db=0, decode_responses=True
+    )
+
+
+pool = create_redis()

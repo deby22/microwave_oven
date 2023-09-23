@@ -3,13 +3,10 @@ from pydantic import NegativeInt, PositiveInt
 from microwave.application.schemas import Microwave as MicrowaveDTO
 from microwave.domain.microwave_oven import MicrowaveOven as MicrowaveEntity
 from microwave.domain.repository import IMicrowaveRepository
-from microwave.infrastructure.repositories.in_memory import InMemoryRepository
-
-IN_MEMORY_REPO = InMemoryRepository()
 
 
 class ApplicationService:
-    def __init__(self, repo: IMicrowaveRepository = IN_MEMORY_REPO):
+    def __init__(self, repo: IMicrowaveRepository):
         self._repo = repo
 
     def get_state(self):

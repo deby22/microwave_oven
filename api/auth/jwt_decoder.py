@@ -1,7 +1,7 @@
-from typing import Dict
 import os
-import jwt
+from typing import Dict
 
+import jwt
 
 # Should be in os.env. This is not production ready code!
 # Only for testing
