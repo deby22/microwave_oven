@@ -21,3 +21,30 @@ TODO:
 6. [ - ] add run instruction (test/coverage/run/and so on)
 7. [ - ] run docker-compose (in makefile?)
 8. [ - ] integration tests
+
+
+# Instructions
+
+### Run project by
+
+```python
+make up
+```
+
+### Stop project by
+
+```python
+make down
+```
+
+### Run linters
+
+```python
+make lint
+```
+
+### Run unit tests
+
+```python
+make test
+```
