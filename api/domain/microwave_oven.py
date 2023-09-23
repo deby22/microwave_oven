@@ -1,28 +1,32 @@
-from typing import Type
+from time import time
+from typing import Optional
 
-from api.domain.exceptions import BusinessRuleValidationException
-from api.domain.power import Power
-from api.domain.seconds import Seconds
-from api.domain.time_provider import RealTimeProvider, TimeProvider
+from domain.exceptions import BusinessRuleValidationException
+from domain.power import Power
+from domain.seconds import Seconds
 
 
 class MicrowaveOven:
     def __init__(
         self,
-        init_counter: int,
-        init_power: int,
-        time_provider_cls: Type[TimeProvider] = RealTimeProvider,
+        turn_of_time: Optional[float] = None,
+        power: Optional[float] = None,
     ):
-        self._counter = Seconds(init_counter)
-        self._power = Power(init_power)
-        self._time_provider = time_provider_cls()
-        self._set_initial_last_turning_on()
+        self._turn_of_time = turn_of_time
+        self._power = Power(power or 0)
+
+    def _counter(self):
+        if not self._turn_of_time:
+            return Seconds(0)
+        if self._time_expired():
+            return Seconds(0)
+        return Seconds(round(self._turn_of_time - time()))
 
     def to_dict(self):
         return {
             "state": self.state,
             "power": int(self._power),
-            "counter": int(self._counter),
+            "counter": int(self._counter()),
         }
 
     @property
@@ -30,38 +34,21 @@ class MicrowaveOven:
         return "OFF" if self._time_expired() and not self._power else "ON"
 
     def cancel(self):
-        self._counter = Seconds(0)
+        self._turn_of_time = time()
         self._power = Power(0)
 
-    def _set_initial_last_turning_on(self):
-        if self._counter:
-            self.last_turning_on = self._time_provider.get_current_time()
-        else:
-            self.last_turning_on = None
-
     def _time_expired(self):
-        if not self._counter:
-            return True
-        if not self.last_turning_on:
-            return True
-        current_time = self._time_provider.get_current_time()
-        asd = bool(self._counter + self.last_turning_on < current_time)
-        return asd
-
-    def _set_last_turning_on_if_needed(self):
-        if self._time_expired():
-            self.last_turning_on = self._time_provider.get_current_time()
+        return self._turn_of_time <= time()
 
     def increase_time(self, value):
-        self._counter += value
-        self._set_last_turning_on_if_needed()
+        if self._time_expired():
+            self._turn_of_time = time() + value
+        self._turn_of_time += value
 
     def decrease_time(self, value):
-        if self._counter - value < 1:
-            raise BusinessRuleValidationException(
-                "You cannot set timer to 0. Use cancled button instead"
-            )
-        self._counter -= value
+        if self._turn_of_time - value < time():
+            raise BusinessRuleValidationException("Seconds should be greater than 0")
+        self._turn_of_time -= value
 
     def increase_power(self, value):
         self._power += value

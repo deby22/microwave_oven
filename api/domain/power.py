@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from api.domain.exceptions import BusinessRuleValidationException
-from api.domain.value_object import ValueObject
+from domain.exceptions import BusinessRuleValidationException
+from domain.value_object import ValueObject
 
 
 @dataclass(frozen=True)

@@ -19,3 +19,7 @@ TODO:
 4. [ - ] JWT token for cancel button
 5. [ - ] websockets
 6. [ - ] infrastructure layer to keep microwave state
+7. [ - ] Add logging info
+8. [ - ] Optional - add makefile
+9. [ - ] add run instruction
+10. [ - ] calculate counter = current_time - timer

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from api.domain.exceptions import BusinessRuleValidationException
-from api.domain.value_object import ValueObject
+from domain.exceptions import BusinessRuleValidationException
+from domain.value_object import ValueObject
 
 
 @dataclass(frozen=True)
@@ -13,10 +13,10 @@ class Seconds(ValueObject):
             raise BusinessRuleValidationException("Seconds should be greater than 0")
 
     def __add__(self, value: int | float) -> "Seconds":
-        return Seconds(value=(value + self.value))
+        return Seconds(value=round(value + self.value))
 
-    def __sub__(self, value: int | float) -> "Seconds":
-        return Seconds(value=(self.value - value))
+    def __sub__(self, value: float | int) -> "Seconds":
+        return Seconds(value=round(self.value - value))
 
     def __bool__(self) -> bool:
         return self.value != 0
@@ -25,4 +25,4 @@ class Seconds(ValueObject):
         return self.value < other
 
     def __int__(self):
-        return self.value
+        return round(self.value)

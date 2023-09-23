@@ -1,7 +1,7 @@
 import pytest
 
-from api.domain.exceptions import BusinessRuleValidationException
-from api.domain.seconds import Seconds
+from domain.exceptions import BusinessRuleValidationException
+from domain.seconds import Seconds
 
 
 def test_time_could_not_be_lower_than_0():

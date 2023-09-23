@@ -1,6 +1,6 @@
 import pytest
 
-from api.domain.power import BusinessRuleValidationException, Power
+from domain.power import BusinessRuleValidationException, Power
 
 
 def test_power_could_not_be_lower_than_0():
