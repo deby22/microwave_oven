@@ -40,7 +40,7 @@ app.add_middleware(
 
 @app.exception_handler(BusinessRuleValidationException)
 async def unicorn_exception_handler(
-    request: Request, exc: BusinessRuleValidationException
+    _request: Request, exc: BusinessRuleValidationException
 ):
     return JSONResponse(
         status_code=422,
