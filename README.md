@@ -11,17 +11,6 @@ Each button can be pressed by anyone, except the Cancel button, which requires a
 * * For simplicity, you can obtain a token from the jwt.io website with an HS256 signature and a simple secret.
 * Design and implement the simplest user interface to display the microwave and its state, as well as the buttons for power, counter adjustments, cancel and state (Microwave is ON when Power or Counter are greater than zero).
 
-TODO:
-
-1. [ - ] website to see current microwave status
-2. [ - ] application layer with fastapi endpoints
-3. [ - ] websockets
-4. [ - ] Add logging info
-5. [ - ] Optional - add makefile
-6. [ - ] add run instruction (test/coverage/run/and so on)
-7. [ - ] run docker-compose (in makefile?)
-8. [ - ] integration tests
-
 
 # Instructions
 
@@ -55,3 +44,10 @@ make test
 ```python
 make integration
 ```
+
+
+# GENERAL INFO
+
+## API is available on address http://localhost:8000
+
+## front is available on addres http://localhost:3000
